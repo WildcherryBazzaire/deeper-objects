@@ -5,12 +5,12 @@
 var preview = {
 	images: [
 		{
-		source: {
+		source: { //0
 			url: "https://i.redditmedia.com/4xFezp8qybWigpg6WN5gkAuI39AIPdv4jdHijFU4_ns.jpg?s=8598544207619a3020f808583e28b4c4",
 			width: 256,
 			height: 256
-		},
-		resolutions: [
+		}, 
+		resolutions: [ //1
 			{
 				url: "https://i.redditmedia.com/4xFezp8qybWigpg6WN5gkAuI39AIPdv4jdHijFU4_ns.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=108&amp;s=19f81c159c3852ca87417e2d2edde0b0",
 				width: 108,
@@ -38,20 +38,43 @@ var preview = {
 * 			string
 * Return 	isEnabled (string)
 */
-
+function isItEnabled(data){
+    var isEnabled = "";
+	for (var key in data){
+      if (key === "enabled"){
+        isEnabled += data[key];
+      }
+    }
+    console.log(typeof isEnabled);
+    return isEnabled;
+}
+console.log(preview.enabled);
+console.log(isItEnabled(preview));
 /*
 * Function that changes the value from the key "enabled" to true, and returns 
 * the value from the key "enabled"
 *
 * Return 	value from key enabled (boolean)
 */
-
+function brownie(mix){
+	for(var key in mix){
+      if(key === "enabled"){
+        return mix[key] = true;
+      }
+    }
+}
+console.log(preview.enabled);
 /*
 * Function that retrieves the urls only from the key "resolutions" 
 * , stores the values in an array called "urls", and returns the created array
 * 
 * Return 	urls (array)
 */
+/*(function egg(roll){
+  for(var key in roll){
+    
+  }
+} */
 
 /*
 * Function that retrieves the first nested key and value pairing
