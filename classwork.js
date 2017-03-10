@@ -4,37 +4,37 @@
 */
 var preview = {
 	images: [
-		{
-		source: { //0
+		{ //0
+		source: {
 			url: "https://i.redditmedia.com/4xFezp8qybWigpg6WN5gkAuI39AIPdv4jdHijFU4_ns.jpg?s=8598544207619a3020f808583e28b4c4",
 			width: 256,
 			height: 256
-		}, 
-		resolutions: [ //1
-			{
+		}, //nested object
+		resolutions: [ //nested array
+			{ //0
 				url: "https://i.redditmedia.com/4xFezp8qybWigpg6WN5gkAuI39AIPdv4jdHijFU4_ns.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=108&amp;s=19f81c159c3852ca87417e2d2edde0b0",
 				width: 108,
 				height: 108
 			},
-			{
+			{ //1
 				url: "https://i.redditmedia.com/4xFezp8qybWigpg6WN5gkAuI39AIPdv4jdHijFU4_ns.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=216&amp;s=2b071d25ede17deadf68cb9b7db13230",
 				width: 216,
 				height: 216
 			}
-		],
-		variants: { },
+		], //end of resolutions
+		variants: { }, //empty array
 		id: "KR8oJeB8ComfEPX0bkCe_p2L73IOmk0sTCsyNlfXSNg"
-		}
+	}
 	],
 	enabled: false
 }
 
 /*
 * Function that retrieves the value from the key "enabled"
-*, stores the value in a string called "isEnabled", and returns the created 
+*, stores the value in a string called "isEnabled", and returns the created
 * variable
 *
-* Note 		You must use the method "typeof" to ensure the return value is of type 
+* Note 		You must use the method "typeof" to ensure the return value is of type
 * 			string
 * Return 	isEnabled (string)
 */
@@ -48,37 +48,46 @@ function isItEnabled(data){
     console.log(typeof isEnabled);
     return isEnabled;
 }
-console.log(preview.enabled);
+console.log('the enabled and typeof is ');
 console.log(isItEnabled(preview));
 /*
-* Function that changes the value from the key "enabled" to true, and returns 
+* Function that changes the value from the key "enabled" to true, and returns
 * the value from the key "enabled"
 *
 * Return 	value from key enabled (boolean)
 */
 function brownie(mix){
+	key_value = false;
 	for(var key in mix){
-      if(key === "enabled"){
-        return mix[key] = true;
-      }
-    }
+		if(key === 'enabled'){
+			mix[key] = true;
+			key_value = mix[key];
+		}
+  }
+	return key_value;
 }
-console.log(preview.enabled);
+console.log(brownie(preview));
 /*
-* Function that retrieves the urls only from the key "resolutions" 
+* Function that retrieves the urls only from the key "resolutions"
 * , stores the values in an array called "urls", and returns the created array
-* 
+*
 * Return 	urls (array)
 */
-/*(function egg(roll){
-  for(var key in roll){
-    
-  }
-} */
-
+function egg(roll){
+  console.log(roll.images[0].resolutions[0].url); //formula to follow
+	console.log(roll.images[0].resolutions[1].url);
+	/* for(var key in roll){
+		if(key === 'images'){
+			for(var i=0; i < key.length; i++){
+				if(key.images[i])
+			}
+		}
+	} */
+}
+egg(preview);
 /*
 * Function that retrieves the first nested key and value pairing
-* from the values of "images", stores them in a new object called 
+* from the values of "images", stores them in a new object called
 * "allKeyValuePairs", and returns the created object
 *
 * Format	var allKeyValuePairs = {
@@ -88,3 +97,7 @@ console.log(preview.enabled);
 *
 * Return 	allKeyValuePairs (object)
 */
+function rat(cake){
+	
+}
+console.log(rat(preview));
