@@ -48,8 +48,9 @@ function isItEnabled(data){
     console.log(typeof isEnabled);
     return isEnabled;
 }
-console.log('the enabled and typeof is ');
+console.log('\nthe enabled and typeof is ');
 console.log(isItEnabled(preview));
+console.log('\n');
 /*
 * Function that changes the value from the key "enabled" to true, and returns
 * the value from the key "enabled"
@@ -57,16 +58,16 @@ console.log(isItEnabled(preview));
 * Return 	value from key enabled (boolean)
 */
 function brownie(mix){
-	key_value = false;
 	for(var key in mix){
 		if(key === 'enabled'){
 			mix[key] = true;
-			key_value = mix[key];
 		}
   }
-	return key_value;
+	return mix.enabled;
 }
+console.log('enabled value is now');
 console.log(brownie(preview));
+console.log('');
 /*
 * Function that retrieves the urls only from the key "resolutions"
 * , stores the values in an array called "urls", and returns the created array
@@ -74,17 +75,21 @@ console.log(brownie(preview));
 * Return 	urls (array)
 */
 function egg(roll){
-  console.log(roll.images[0].resolutions[0].url); //formula to follow
-	console.log(roll.images[0].resolutions[1].url);
-	/* for(var key in roll){
-		if(key === 'images'){
-			for(var i=0; i < key.length; i++){
-				if(key.images[i])
-			}
-		}
-	} */
+  var urls = [];
+  //urls.push(roll.images[0].resolutions[0].url); //formula to follow
+  //urls.push(roll.images[0].resolutions[1].url);
+  for(var i=0; i < roll.images[0].resolutions.length; i++){
+	for(var j in roll.images[0].resolutions[i]){
+		if(j === 'url'){
+			urls.push(roll.images[0].resolutions[i][j]);
+		}		
+	}
+  }
+  return urls;
 }
-egg(preview);
+
+console.log(egg(preview));
+console.log('');
 /*
 * Function that retrieves the first nested key and value pairing
 * from the values of "images", stores them in a new object called
